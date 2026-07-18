@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import {
-  BarChart, Bar, LineChart, Line, XAxis, YAxis,
+  BarChart, Bar, XAxis, YAxis,
   CartesianGrid, Tooltip, ResponsiveContainer, Cell
 } from 'recharts';
-
 // ── Colours ──────────────────────────────────────────
 const BLUE = '#2563eb';
 const GREEN = '#059669';
@@ -61,7 +60,7 @@ export default function App() {
   const [salesData, setSalesData] = useState([]);
   const [menuData, setMenuData] = useState([]);
   const [channelData, setChannelData] = useState([]);
-  const [hourlyData, setHourlyData] = useState([]);
+  // hourlyData available for future use
   const [loading, setLoading] = useState(true);
 
   // Load all CSV files when app starts
@@ -85,7 +84,7 @@ export default function App() {
       setSalesData(sales);
       setMenuData(menu.filter(m => m.Net_Sales > 0).sort((a, b) => b.Net_Sales - a.Net_Sales));
       setChannelData(channels);
-      setHourlyData(hourly);
+      //setHourlyData(hourly);
       setLoading(false);
     });
   }, []);
